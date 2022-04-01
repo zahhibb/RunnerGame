@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs/Chunk.prefab.meta
 guid: 5f1974f1ffb4d5845ba9fdd12ea265a5
 PrefabImporter:
+=======
+guid: afaa8868465679b488ed7a0005782623
+TextScriptImporter:
+>>>>>>> Bea:Assets/Resources/BillingMode.json.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
