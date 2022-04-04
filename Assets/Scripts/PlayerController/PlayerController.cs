@@ -106,7 +106,8 @@ public class PlayerController : MonoBehaviour
     {
         if (hit.transform.tag == "Obstacle")
         {
-            SetPlayerState(false);
+            Debug.Log("collision");
+            // SetPlayerState(false);
         }
     }
 }

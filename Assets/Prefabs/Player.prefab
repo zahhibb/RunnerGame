@@ -1017,7 +1017,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1160769367339952354}
   m_Layer: 0
-  m_Name: Vehicle01_Vespa
+  m_Name: Vespa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1308,6 +1308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1160769367339952364}
+  - component: {fileID: 5038651201620426970}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -1331,6 +1332,28 @@ Transform:
   m_Father: {fileID: 1160769367438274077}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5038651201620426970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160769367339988172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c00939b5b998b4eac4c10d048ba347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToRagdoll:
+  - {fileID: 1160769367124200323}
+  - {fileID: 1160769367339988176}
+  - {fileID: 1160769367339988178}
+  - {fileID: 1160769367339988188}
+  - {fileID: 1160769367339988174}
+  - {fileID: 1160769367339988186}
+  - {fileID: 1160769367339988164}
+  - {fileID: 1100092501886375317}
+  startRagdoll: 0
 --- !u!1 &1160769367339988174
 GameObject:
   m_ObjectHideFlags: 0
