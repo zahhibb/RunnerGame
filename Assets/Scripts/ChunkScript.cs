@@ -52,7 +52,7 @@ public class ChunkScript : MonoBehaviour
 
     void Start()
     {
-        levelGeneration = GameObject.FindGameObjectWithTag("levelGen").GetComponent<LevelGeneration>();
+        //levelGeneration = GameObject.FindGameObjectWithTag("levelGen").GetComponent<LevelGeneration>();
         HideGrid(row_1);
         HideGrid(row_2);
         HideGrid(row_3);
