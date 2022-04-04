@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             beginRampingMovement = false;
+            currentSpeed = 0;
         }
         controller.Move(movement * currentSpeed * Time.deltaTime);
     }
@@ -99,7 +100,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<PlayerController>().enabled = incomingState;
     }
 
-    
+
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
