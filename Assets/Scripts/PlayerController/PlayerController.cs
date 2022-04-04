@@ -15,17 +15,17 @@ public class PlayerController : MonoBehaviour
     private float maxSpeed;
     private float currentSpeed = 0;
     private bool beginRampingMovement = false;
+
     private bool hasDied = false;
 
-    private Vector3 previousRecordedPosition = Vector3.zero;
-
     private CharacterController controller;
+    private PlayerRagdollCollision playerRagdollCollision;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        playerRagdollCollision = transform.GetChild(0).GetComponent<PlayerRagdollCollision>();
         maxSpeed = movementSpeed;
-        // InvokeRepeating();
     }
 
     void Update()
@@ -42,10 +42,6 @@ public class PlayerController : MonoBehaviour
         // rotation
         transform.GetChild(0).rotation = FaceTowardsMovementDirection(movement);
     }
-
-    // private Vector3 RecordMovement(){
-
-    // }
 
     private Vector3 ClampedMovement()
     {
@@ -90,24 +86,19 @@ public class PlayerController : MonoBehaviour
         return Quaternion.identity;
     }
 
-    /// <summary>
-    /// Enables/Disables player Movement and Graphic based on incoming bool value.
-    /// </summary>
-    private void SetPlayerState(bool incomingState)
+    private void ModifyPlayerState(bool incomingState)
     {
-        transform.GetChild(0).gameObject.SetActive(incomingState);
+        // transform.GetChild(0).gameObject.SetActive(incomingState);
         controller.enabled = incomingState;
         GetComponent<PlayerController>().enabled = incomingState;
+        playerRagdollCollision.StartRagdoll = true;
     }
-
-
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.transform.tag == "Obstacle")
         {
-            Debug.Log("collision");
-            // SetPlayerState(false);
+            ModifyPlayerState(false);
         }
     }
 }

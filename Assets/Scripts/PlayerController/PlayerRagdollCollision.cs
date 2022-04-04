@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,64 +6,53 @@ using UnityEngine;
 public class PlayerRagdollCollision : MonoBehaviour
 {
     [SerializeField] private List<GameObject> objectsToRagdoll;
-    // [SerializeField] private Transform parentGameobject;
-
     [SerializeField] private bool startRagdoll = false;
-
-    void Start()
+    public bool StartRagdoll
     {
-
+        get { return startRagdoll; }
+        set { startRagdoll = value; }
     }
 
     void Update()
     {
         if (startRagdoll)
         {
-            // DetachChildrenIterative(transform);
-            DetachChildrenIterative2();
+            ModifyDetachedChildren();
         }
     }
 
-    private void DetachChildrenIterative2()
+    private void ModifyDetachedChildren()
     {
         for (int i = 0; i < objectsToRagdoll.Count; i++)
         {
-            if (objectsToRagdoll[i].GetComponent<BoxCollider>() == null)
-            {
-                if (objectsToRagdoll[i].GetComponent<SphereCollider>() != null) return;
-
-                objectsToRagdoll[i].AddComponent<BoxCollider>();
-            }
-            else
-            {
-                objectsToRagdoll[i].GetComponent<BoxCollider>().enabled = true;
-            }
-
-            if (objectsToRagdoll[i].GetComponent<Rigidbody>() == null)
-            {
-                objectsToRagdoll[i].AddComponent<Rigidbody>();
-            }
+            SetupColliders(i);
+            SetupRigidbody(i);
         }
         transform.DetachChildren();
     }
 
-    // private void DetachChildrenIterative(Transform parent)
-    // {
-    //     foreach (Transform child in parent)
-    //     {
-    //         if (child.gameObject.GetComponent<BoxCollider>() != null)
-    //         {
-    //             child.gameObject.GetComponent<BoxCollider>().enabled = true;
-    //         }
-    //         else
-    //         {
-    //             child.gameObject.AddComponent<BoxCollider>();
-    //         }
-    //         child.gameObject.AddComponent<Rigidbody>();
-    //         // child.DetachChildren();
-    //         // parent.DetachChildren();
+    private void SetupColliders(int index)
+    {
+        if (objectsToRagdoll[index].GetComponent<BoxCollider>() == null)
+        {
+            if (objectsToRagdoll[index].GetComponent<SphereCollider>() != null) return;
 
-    //         DetachChildrenIterative(child);
-    //     }
-    // }
+            objectsToRagdoll[index].AddComponent<BoxCollider>();
+        }
+        else
+        {
+            objectsToRagdoll[index].GetComponent<BoxCollider>().enabled = true;
+        }
+    }
+
+    private void SetupRigidbody(int index)
+    {
+        if (objectsToRagdoll[index].GetComponent<Rigidbody>() == null)
+        {
+            objectsToRagdoll[index].AddComponent<Rigidbody>();
+            objectsToRagdoll[index].GetComponent<Rigidbody>().mass = 10f;
+            objectsToRagdoll[index].GetComponent<Rigidbody>().drag = 2f;
+            objectsToRagdoll[index].GetComponent<Rigidbody>().angularDrag = 0.5f;
+        }
+    }
 }
