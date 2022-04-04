@@ -21,7 +21,10 @@ public class LevelGeneration : MonoBehaviour
 
     void Start()
     {
-        SpawnBlock();
+        for (int i = 0; i < 5; i++)
+        {
+            SpawnBlock();
+        }
     }
 
     void Update()
@@ -44,7 +47,7 @@ public class LevelGeneration : MonoBehaviour
         //Chose a random chunk here
          
         placedChunks.Add(Instantiate(chunkPrefabs[ChoseRandomChunk()], Vector3.forward * nextChunkDistance, Quaternion.identity));
-        if (placedChunks.Count > 6)
+        if (placedChunks.Count > maxChunkCount)
         {
             placedChunks[0].GetComponent<ChunkScript>().DestroyObstacles();
             Destroy(placedChunks[0]);
