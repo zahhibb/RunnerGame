@@ -52,7 +52,7 @@ public class ChunkScript : MonoBehaviour
 
     void Start()
     {
-        //levelGeneration = GameObject.FindGameObjectWithTag("levelGen").GetComponent<LevelGeneration>();
+        levelGeneration = GameObject.FindGameObjectWithTag("levelGen").GetComponent<LevelGeneration>();
         HideGrid(row_1);
         HideGrid(row_2);
         HideGrid(row_3);
@@ -94,12 +94,10 @@ public class ChunkScript : MonoBehaviour
 
     public void ChoseRowTarget(GameObject[] row)
     {
-        print(row);
 
         int rowSpot = Random.Range(0, row.Length);
         SpawnObjects(row[rowSpot].transform.position);
 
-        print("Rowspot" + " " + rowSpot);
 
         if(twoPerRow)
         {
@@ -109,7 +107,6 @@ public class ChunkScript : MonoBehaviour
                 if (rowSpot == 0)
                 {
                     int secondSpot = Random.Range(1, 2);
-                    print("secondSpot" + " " + secondSpot);
                     SpawnObjects(row[secondSpot].transform.position);
                 }
                 else if (rowSpot == 1)
@@ -118,13 +115,11 @@ public class ChunkScript : MonoBehaviour
                     if (secondSpot == 1)
                         secondSpot++;
 
-                    print("secondSpot" + " " + secondSpot);
                     SpawnObjects(row[secondSpot].transform.position);
                 }
                 else if (rowSpot == 2)
                 {
                     int secondSpot = Random.Range(0, 1);
-                    print("secondSpot" + " " + secondSpot);
                     SpawnObjects(row[secondSpot].transform.position);
                 }
             }
@@ -134,10 +129,33 @@ public class ChunkScript : MonoBehaviour
 
     }
 
+    public int RandomWeight()
+    {
+        int spawnObj = Random.Range(0, 15);
+        return spawnObj;
+    }
+
     public void SpawnObjects(Vector3 spawnPos)
     {
-        int obstacleNumber = Random.Range(0, obstacles.Length);
-        placedObstacles.Add(Instantiate(obstacles[obstacleNumber], spawnPos, Quaternion.identity));
+
+        //int obstacleNumber = Random.Range(0, levelGeneration.obstacles.Length);
+
+
+        if (RandomWeight() > 9)
+        {
+            int obstacleNumber = Random.Range(0, levelGeneration.obstacles.Length);
+            placedObstacles.Add(Instantiate(levelGeneration.obstacles[obstacleNumber], spawnPos, Quaternion.identity));
+        }
+        else if (RandomWeight() < 1)
+        {
+            placedObstacles.Add(Instantiate(levelGeneration.pirogVagn, spawnPos, Quaternion.identity));
+        }
+        else
+        {
+            placedObstacles.Add(Instantiate(levelGeneration.pirog, spawnPos, Quaternion.identity));
+        }
+
+        
     }
 
     public void DestroyObstacles()

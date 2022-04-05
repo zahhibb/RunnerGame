@@ -12,9 +12,14 @@ public class LevelGeneration : MonoBehaviour
     //Chunks that have been spawned
     List<GameObject> placedChunks = new List<GameObject>();
 
-    public int spawnDistance = 0;
     public float maxTimer = 0;
     public int maxChunkCount = 0;
+    int spawnDistance = 50;
+
+
+    public GameObject[] obstacles;
+    public GameObject pirog;
+    public GameObject pirogVagn;
 
     float currenTimer = 0;
     int chunkCounter = 0;
@@ -49,7 +54,7 @@ public class LevelGeneration : MonoBehaviour
         placedChunks.Add(Instantiate(chunkPrefabs[ChoseRandomChunk()], Vector3.forward * nextChunkDistance, Quaternion.identity));
         if (placedChunks.Count > maxChunkCount)
         {
-            placedChunks[0].GetComponent<ChunkScript>().DestroyObstacles();
+            placedChunks[0].GetComponentInChildren<ChunkScript>().DestroyObstacles();
             Destroy(placedChunks[0]);
             placedChunks.RemoveAt(0);
         }
