@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     private int pirogiValue = 10;
     private int currentPirogis = 0;
     private int pirogiPickup = 1; // let us talk about how much pirogis you should get from crashing into pirogiwagon
+    private bool goalLevelComplete = false;
+    private bool goalDeliveredPirogis = false;
+    private bool goalNoDamageTaken = false;
 
 
     void Awake()
@@ -97,8 +100,37 @@ public class GameManager : MonoBehaviour
             GameTimer = GameTimer + Time.deltaTime;
             //Debug.Log(GameTimer);
         }
+
+        if (goalLevelComplete)
+        {
+            // yield 1 star
+        }
+
+        if (goalDeliveredPirogis)
+        {
+            //yield 1 star
+        }
+
+        if (goalNoDamageTaken)
+        {
+            //yield 1 star
+        }
     }
 
+public void SetGoalLevelComplete()
+{
+goalLevelComplete = true;
+}
+
+public void SetGoalDeliveredPirogis()
+{
+    goalDeliveredPirogis = true;
+}
+
+public void SetGoalNoDamageTaken()
+{
+    goalNoDamageTaken = true;
+}
     public void TakeDamage()
     {
         PlayerLives -= 1;
