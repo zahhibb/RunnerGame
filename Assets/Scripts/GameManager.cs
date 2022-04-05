@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
     private float GameTimer = 0;
     private float GameTimerGoal = 30;
 
-    //test
-    public int score;
-    public int displayScore;
-    public Text scoreUI;
+    private int totalScore = 0;
+    private int pirogiValue = 10;
+    private int currentPirogis = 0;
+    private int pirogiPickup = 1; // let us talk about how much pirogis you should get from crashing into pirogiwagon
+
 
     void Awake()
     {
@@ -21,26 +22,61 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        score = 0;
-        displayScore = 0;
-        StartCoroutine(ScoreUpdater());
     }
-    private IEnumerator ScoreUpdater()
+
+    // Method to keep track of pirogis in possession
+    public void IncreasePirogi()
     {
-        while (true)
-        {
-            if (displayScore < score)
-            {
-                displayScore++; //Increment the display score by 1
-                scoreUI.text = displayScore.ToString(); //write it to the UI
-            }
-            yield return new WaitForSeconds(0.2f);
-        }
+        currentPirogis += pirogiPickup;
+    }
+    public int GetTotalPirogis()
+    {
+        return currentPirogis;
+    }
+    
+    //Method to decrease pirogi amount on delivery/sale
+    public void DecreasePirogi()
+    {
+        if (currentPirogis <=0)
+            return;
+
+        currentPirogis--;
+    }
+
+    // Method to increase score counter from pirogi delivery
+    public void ScoreIncrease()
+    {
+        totalScore += pirogiValue;
+    }
+    public int GetTotalScore()
+    {
+        return totalScore;
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        //test for decreasing pirogi value
+        if (Input.GetKeyDown(KeyCode.CapsLock))
+        {
+            DecreasePirogi();
+            Debug.Log(GetTotalPirogis());
+        }
+
+        //test for picking up pirogis
+        // if (Input.GetKeyDown(KeyCode.LeftControl))
+        // {
+        //    AddPirogi();
+        //     Debug.Log(GetTotalPirogis());
+        // }
+
+        // test for score counter
+        // if (Input.GetKeyDown(KeyCode.AltGr))
+        // {
+        //     ScoreIncrease();
+        //     Debug.Log(GetTotalScore());
+        // }
+
         if (PlayerLives <= 0) //Lose State
         {
             //Show Debrief Menu for Losing
@@ -59,13 +95,13 @@ public class GameManager : MonoBehaviour
         else
         {
             GameTimer = GameTimer + Time.deltaTime;
-            Debug.Log(GameTimer);
+            //Debug.Log(GameTimer);
         }
     }
 
     public void TakeDamage()
     {
-        PlayerLives = -1;
+        PlayerLives -= 1;
     }
 
     public int GetPlayerLives() // UI Manager will see this
