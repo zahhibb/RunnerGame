@@ -10,18 +10,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float forwardMovementSpeed = 5f;
     [SerializeField] private float rotationSpeed = 20f;
     [SerializeField] private float accelerationSpeed = 2f;
-    [SerializeField] private float maxSpeed = 30f;
     [SerializeField] private bool beginRampingMovement = true;
 
     [Header("Jumping")]
-    [SerializeField] private float jumpHeight = 1.0f;
-    [SerializeField] private float gravityValue = -30f;
+    [SerializeField] private float jumpHeight = 0.1f;
+    [SerializeField] private float gravityValue = -60f;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
 
     private Vector3 movementVector;
     private Vector2 movementClampPositions = new Vector2(-7f, 7f);
     private float currentSpeed = 0;
+    private float maxSpeed = 30f;
 
     private CharacterController controller;
     private PlayerRagdollCollision playerRagdollCollision;
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         playerRagdollCollision = transform.GetChild(0).GetComponent<PlayerRagdollCollision>();
+        maxSpeed = movementSpeed;
     }
 
     void Update()
