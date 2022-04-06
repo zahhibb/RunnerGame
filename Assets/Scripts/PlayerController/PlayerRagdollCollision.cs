@@ -6,19 +6,44 @@ using UnityEngine;
 public class PlayerRagdollCollision : MonoBehaviour
 {
     [SerializeField] private List<GameObject> objectsToRagdoll;
-    [SerializeField] private bool startRagdoll = false;
+    private bool startRagdoll = false;
+    private bool hasExploded = false;
     public bool StartRagdoll
     {
         get { return startRagdoll; }
         set { startRagdoll = value; }
     }
 
+    [Header("Rigidbody data")]
+    [SerializeField] private float rigidbodyMass = 10f;
+    [SerializeField] private float rigidbodyDrag = 2f;
+    [SerializeField] private float rigidbodyAngularDrag = 0.5f;
+    [SerializeField] private float rigidbodyExplosionForce = 10f;
+    [SerializeField] private float rigidbodyExplosionRadius = 3f;
+
     void Update()
     {
         if (startRagdoll)
         {
             ModifyDetachedChildren();
+
+            if (!hasExploded)
+                ExplosionForce();
         }
+    }
+
+    private void ExplosionForce()
+    {
+        Vector3 explosionPos = transform.position;
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, rigidbodyExplosionRadius);
+        foreach (Collider hit in colliders)
+        {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+
+            if (rb != null)
+                rb.AddExplosionForce(rigidbodyExplosionForce, explosionPos, rigidbodyExplosionRadius, 3.0F, ForceMode.Impulse);
+        }
+        hasExploded = true;
     }
 
     private void ModifyDetachedChildren()
@@ -33,11 +58,15 @@ public class PlayerRagdollCollision : MonoBehaviour
 
     private void SetupColliders(int index)
     {
+        if (objectsToRagdoll[index].GetComponent<CapsuleCollider>() != null)
+            objectsToRagdoll[index].GetComponent<CapsuleCollider>().enabled = true;
+
         if (objectsToRagdoll[index].GetComponent<BoxCollider>() == null)
         {
-            if (objectsToRagdoll[index].GetComponent<SphereCollider>() != null) return;
-
-            objectsToRagdoll[index].AddComponent<BoxCollider>();
+            if (objectsToRagdoll[index].GetComponent<CapsuleCollider>() == null)
+            {
+                objectsToRagdoll[index].AddComponent<BoxCollider>();
+            }
         }
         else
         {
@@ -50,9 +79,9 @@ public class PlayerRagdollCollision : MonoBehaviour
         if (objectsToRagdoll[index].GetComponent<Rigidbody>() == null)
         {
             objectsToRagdoll[index].AddComponent<Rigidbody>();
-            objectsToRagdoll[index].GetComponent<Rigidbody>().mass = 10f;
-            objectsToRagdoll[index].GetComponent<Rigidbody>().drag = 2f;
-            objectsToRagdoll[index].GetComponent<Rigidbody>().angularDrag = 0.5f;
+            objectsToRagdoll[index].GetComponent<Rigidbody>().mass = rigidbodyMass;
+            objectsToRagdoll[index].GetComponent<Rigidbody>().drag = rigidbodyDrag;
+            objectsToRagdoll[index].GetComponent<Rigidbody>().angularDrag = rigidbodyAngularDrag;
         }
     }
 }

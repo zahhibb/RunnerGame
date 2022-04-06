@@ -5,18 +5,23 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private float movementSpeed = 6f;
     [SerializeField] private float forwardMovementSpeed = 5f;
     [SerializeField] private float rotationSpeed = 20f;
+    [SerializeField] private float accelerationSpeed = 2f;
+    [SerializeField] private float maxSpeed = 30f;
+    [SerializeField] private bool beginRampingMovement = true;
 
-    private Vector3 movement;
+    [Header("Jumping")]
+    [SerializeField] private float jumpHeight = 1.0f;
+    [SerializeField] private float gravityValue = -30f;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+
+    private Vector3 movementVector;
     private Vector2 movementClampPositions = new Vector2(-7f, 7f);
-    private float accelerationSpeed = 2f;
-    private float maxSpeed;
     private float currentSpeed = 0;
-    private bool beginRampingMovement = false;
-
-    private bool hasDied = false;
 
     private CharacterController controller;
     private PlayerRagdollCollision playerRagdollCollision;
@@ -25,13 +30,34 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         playerRagdollCollision = transform.GetChild(0).GetComponent<PlayerRagdollCollision>();
-        maxSpeed = movementSpeed;
     }
 
     void Update()
     {
-        // input
-        movement = new Vector3(Input.GetAxis("Horizontal") * 2, 0, forwardMovementSpeed);
+        GroundCheck();
+        Jumping();
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
+        movementVector = new Vector3(Input.GetAxis("Horizontal") * 2, 0, forwardMovementSpeed);
+    }
+
+    private void GroundCheck()
+    {
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
+    }
+
+    private void Jumping()
+    {
+        // Changes the height position of the player
+        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        {
+            playerVelocity.y += jumpHeight * -3f * gravityValue;
+        }
     }
 
     void FixedUpdate()
@@ -40,7 +66,7 @@ public class PlayerController : MonoBehaviour
         controller.transform.position = ClampedMovement();
 
         // rotation
-        transform.GetChild(0).rotation = FaceTowardsMovementDirection(movement);
+        transform.GetChild(0).rotation = FaceTowardsMovementDirection(movementVector);
     }
 
     private Vector3 ClampedMovement()
@@ -51,7 +77,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            controller.Move(movement * movementSpeed * Time.deltaTime);
+            controller.Move(movementVector * movementSpeed * Time.deltaTime);
         }
 
         Vector3 clampedPosition = transform.position;
@@ -70,16 +96,16 @@ public class PlayerController : MonoBehaviour
             beginRampingMovement = false;
             currentSpeed = 0;
         }
-        controller.Move(movement * currentSpeed * Time.deltaTime);
+        controller.Move(movementVector * currentSpeed * Time.deltaTime);
     }
 
     private Quaternion FaceTowardsMovementDirection(Vector3 direction)
     {
-        if (movement != Vector3.zero)
+        if (movementVector != Vector3.zero)
         {
             return Quaternion.Slerp(
                 transform.GetChild(0).rotation,
-                Quaternion.LookRotation(movement),
+                Quaternion.LookRotation(movementVector),
                 Time.deltaTime * rotationSpeed
             );
         }
