@@ -26,7 +26,7 @@ public class LevelGeneration : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             SpawnBlock();
         }
@@ -34,15 +34,15 @@ public class LevelGeneration : MonoBehaviour
 
     void Update()
     {
-        if(currenTimer < maxTimer)
-        {
-            currenTimer += Time.deltaTime;
-        }
-        else
-        {
-            SpawnBlock();
-            currenTimer = 0;
-        }
+        //if(currenTimer < maxTimer)
+        //{
+        //    currenTimer += Time.deltaTime;
+        //}
+        //else
+        //{
+        //    SpawnBlock();
+        //    currenTimer = 0;
+        //}
     }
 
     public void SpawnBlock()

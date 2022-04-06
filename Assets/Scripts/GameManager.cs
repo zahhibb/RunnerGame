@@ -6,13 +6,17 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    private SoundManager soundManager;
+    public GameObject playerPrefab;
     private int PlayerLives = 3;
     private float GameTimer = 0;
     private float GameTimerGoal = 30;
 
+    private Vector3 spawnPoint;
     private int totalScore = 0;
     private int pirogiValue = 10;
     private int currentPirogis = 0;
+    private int pirogMultiplier = 0;
     private int pirogiPickup = 1; // let us talk about how much pirogis you should get from crashing into pirogiwagon
     private bool goalLevelComplete = false;
     private bool goalDeliveredPirogis = false;
@@ -25,6 +29,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        soundManager = GetComponent<SoundManager>();
     }
 
     // Method to keep track of pirogis in possession
@@ -43,17 +48,36 @@ public class GameManager : MonoBehaviour
         if (currentPirogis <=0)
             return;
 
-        currentPirogis--;
+        currentPirogis = 0;
+    }
+
+    public void IncreaseMultiplier()
+    {
+        if (currentPirogis != 0)
+        {
+            pirogMultiplier = (currentPirogis / 10) + 1;
+        }
+        else
+        {
+            pirogMultiplier = 1;
+        }
+
     }
 
     // Method to increase score counter from pirogi delivery
     public void ScoreIncrease()
     {
-        totalScore += pirogiValue;
+        //int scoreMulitplier = (10 / currentPirogis) + 1;
+        totalScore += (pirogMultiplier * currentPirogis);
     }
     public int GetTotalScore()
     {
         return totalScore;
+    }
+
+    public int GetTotalPirogMultiplier()
+    {
+        return pirogMultiplier;
     }
 
     // Update is called once per frame
@@ -117,7 +141,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-public void SetGoalLevelComplete()
+    public void SpawnPlayer()
+    {
+        print("SpawnedPlayer");
+        //Instantiate(playerPrefab, spawnPoint, Quaternion.identity).GetComponent<PlayerController>().SpawnSafety();
+        GameObject pc = Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
+        pc.GetComponent<PlayerController>().SpawnSafety();
+        soundManager.SetPlayer(pc);
+        
+    }
+
+    public void SetSpawnPoint(Vector3 spawnPos)
+    {
+        spawnPoint = spawnPos;
+    }
+
+    public void SetGoalLevelComplete()
 {
 goalLevelComplete = true;
 }

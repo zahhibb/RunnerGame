@@ -821,13 +821,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160769365931615331}
-  m_LocalRotation: {x: 0.46174863, y: -0, z: -0, w: 0.8870109}
-  m_LocalPosition: {x: 0, y: 14.11, z: -6.409999}
+  m_LocalRotation: {x: 0.31395808, y: -0, z: -0, w: 0.9494369}
+  m_LocalPosition: {x: 0, y: 11.86, z: -7.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1160769367438274077}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 55, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 36.596, y: 0, z: 0}
 --- !u!20 &1160769365931615329
 Camera:
   m_ObjectHideFlags: 0
@@ -1810,7 +1810,7 @@ GameObject:
   - component: {fileID: 1160769367438274072}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1861,11 +1861,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91ca8f05e1a992478b8dedce8160129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4
-  forwardMovementSpeed: 5
-  rotationSpeed: 20
+  movementSpeed: 38
+  forwardMovementSpeed: 1.3
+  rotationSpeed: 60
   accelerationSpeed: 2
-  maxSpeed: 30
   beginRampingMovement: 0
   jumpHeight: 0.11
   gravityValue: -60

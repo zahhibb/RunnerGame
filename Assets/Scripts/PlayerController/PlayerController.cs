@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravityValue = -60f;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
+    private bool invinciblePlayer = false;
 
     private Vector3 movementVector;
     private Vector2 movementClampPositions = new Vector2(-7f, 7f);
@@ -25,9 +26,15 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController controller;
     private PlayerRagdollCollision playerRagdollCollision;
+    private UIManager uIManager;
+    private GameManager gameManager;
+    private SoundManager soundManager;
 
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        uIManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
+        soundManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoundManager>();
         controller = GetComponent<CharacterController>();
         playerRagdollCollision = transform.GetChild(0).GetComponent<PlayerRagdollCollision>();
         maxSpeed = movementSpeed;
@@ -119,13 +126,37 @@ public class PlayerController : MonoBehaviour
         controller.enabled = incomingState;
         GetComponent<PlayerController>().enabled = incomingState;
         playerRagdollCollision.StartRagdoll = true;
+        if(gameManager.GetPlayerLives() > -1)
+            StartCoroutine(DestroyCorpse());
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.transform.tag == "Obstacle")
+        if (hit.transform.tag == "Obstacle" && invinciblePlayer == false)
         {
+            soundManager.CrashSound();
+            gameManager.TakeDamage();
+            uIManager.UpdateLifes();
             ModifyPlayerState(false);
         }
+    }
+
+    public void SpawnSafety()
+    {
+        invinciblePlayer = true;
+        StartCoroutine(BecomeVulnerable());
+    }
+
+    IEnumerator DestroyCorpse()
+    {
+        yield return new WaitForSeconds(1);
+        gameManager.SpawnPlayer();
+        Destroy(gameObject);
+    }
+
+    IEnumerator BecomeVulnerable()
+    {
+        yield return new WaitForSeconds(1.5f);
+        invinciblePlayer = false;
     }
 }

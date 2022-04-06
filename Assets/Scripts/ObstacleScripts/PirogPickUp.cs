@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PirogPickUp : MonoBehaviour
 {
+    GameManager gameManager;
+    UIManager uiManager;
+    SoundManager soundManager;
 
     void Start()
     {
-        
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        uiManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
+        soundManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoundManager>();
     }
 
 
@@ -24,7 +29,11 @@ public class PirogPickUp : MonoBehaviour
 
     public void OnPickUp()
     {
-        print("Picked Up");
+        soundManager.PirogPickSound();
+        gameManager.IncreasePirogi();
+        uiManager.UpdatePirogCount();
+        gameManager.IncreaseMultiplier();
+        uiManager.UpdatePirogMultiplier();
         Destroy(gameObject);
     }
 
