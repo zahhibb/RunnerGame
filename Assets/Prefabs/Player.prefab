@@ -790,7 +790,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1100092501886375317}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1
   m_Height: 2.3
   m_Direction: 2
@@ -1017,7 +1017,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1160769367339952354}
   m_Layer: 0
-  m_Name: Vehicle01_Vespa
+  m_Name: Vespa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1308,6 +1308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1160769367339952364}
+  - component: {fileID: 5038651201620426970}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -1331,6 +1332,32 @@ Transform:
   m_Father: {fileID: 1160769367438274077}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5038651201620426970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160769367339988172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c00939b5b998b4eac4c10d048ba347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToRagdoll:
+  - {fileID: 1160769367124200323}
+  - {fileID: 1160769367339988176}
+  - {fileID: 1160769367339988178}
+  - {fileID: 1160769367339988188}
+  - {fileID: 1160769367339988174}
+  - {fileID: 1160769367339988186}
+  - {fileID: 1160769367339988164}
+  - {fileID: 1100092501886375317}
+  rigidbodyMass: 2
+  rigidbodyDrag: 0.3
+  rigidbodyAngularDrag: 0.5
+  rigidbodyExplosionForce: 10
+  rigidbodyExplosionRadius: 3
 --- !u!1 &1160769367339988174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,8 +1541,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.52, y: 1.55, z: 1}
-  m_Center: {x: 0, y: 0.12, z: 0.62}
+  m_Size: {x: 0.52, y: 1.55, z: 0.76}
+  m_Center: {x: 0, y: 0.12, z: 0.51}
 --- !u!1 &1160769367339988184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,7 +1848,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: -0.1}
+  m_Center: {x: 0, y: 0.74, z: -0.1}
 --- !u!114 &1160769367438274072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1834,9 +1861,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91ca8f05e1a992478b8dedce8160129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 6
+  movementSpeed: 4
   forwardMovementSpeed: 5
   rotationSpeed: 20
+  accelerationSpeed: 2
+  maxSpeed: 30
+  beginRampingMovement: 0
+  jumpHeight: 0.11
+  gravityValue: -60
 --- !u!1 &3967972890285937188
 GameObject:
   m_ObjectHideFlags: 0
