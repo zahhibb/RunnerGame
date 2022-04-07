@@ -55,8 +55,8 @@ public class PlayerController : MonoBehaviour
         Jumping();
 
         playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
-        movementVector = new Vector3(Input.GetAxis("Horizontal") * 2, 0, forwardMovementSpeed);
+        // controller.Move(playerVelocity * Time.deltaTime);
+        movementVector = new Vector3(Input.GetAxis("Horizontal") * 2, playerVelocity.y, forwardMovementSpeed);
     }
 
     private void GroundCheck()
