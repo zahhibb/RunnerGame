@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     private bool groundedPlayer;
     private bool invinciblePlayer = false;
 
+    [Header("Particles")]
+    [SerializeField] private ParticleSystem drivingSmokeParticle;
+
+    private ParticleSystem smokeParticleInstance;
     private Vector3 movementVector;
     private Vector2 movementClampPositions = new Vector2(-7f, 7f);
     private float currentSpeed = 0;
@@ -41,6 +45,8 @@ public class PlayerController : MonoBehaviour
         playerRagdollCollision = transform.GetChild(0).GetComponent<PlayerRagdollCollision>();
         maxSpeed = movementSpeed;
         currentSpeed = movementSpeed / 3;
+        smokeParticleInstance = Instantiate(drivingSmokeParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f), Quaternion.identity);
+        smokeParticleInstance.transform.parent = transform;
     }
 
     void Update()
@@ -49,8 +55,8 @@ public class PlayerController : MonoBehaviour
         Jumping();
 
         playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
-        movementVector = new Vector3(Input.GetAxis("Horizontal") * 2, 0, forwardMovementSpeed);
+        // controller.Move(playerVelocity * Time.deltaTime);
+        movementVector = new Vector3(Input.GetAxis("Horizontal") * 2, playerVelocity.y, forwardMovementSpeed);
     }
 
     private void GroundCheck()
@@ -168,5 +174,17 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         invinciblePlayer = false;
+    }
+
+    private void ToggleSmokeEffect(bool value)
+    {
+        if (value)
+        {
+            smokeParticleInstance.Play();
+        }
+        else
+        {
+            smokeParticleInstance.Stop();
+        }
     }
 }
