@@ -673,6 +673,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Veh_SchoolBus_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1530585983919378, guid: d51a5fa6f7c4cdb4aaf86b50ece8ff35, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4758639895511834, guid: d51a5fa6f7c4cdb4aaf86b50ece8ff35, type: 3}
       propertyPath: m_RootOrder
       value: 12

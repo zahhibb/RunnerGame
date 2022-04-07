@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerRagdollCollision = transform.GetChild(0).GetComponent<PlayerRagdollCollision>();
         maxSpeed = movementSpeed;
+        currentSpeed = movementSpeed / 3;
     }
 
     void Update()
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             beginRampingMovement = false;
-            currentSpeed = 0;
+            currentSpeed = movementSpeed / 3;
         }
         controller.Move(movementVector * currentSpeed * Time.deltaTime);
     }

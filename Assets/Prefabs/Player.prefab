@@ -1865,7 +1865,7 @@ MonoBehaviour:
   forwardMovementSpeed: 1.3
   rotationSpeed: 60
   accelerationSpeed: 2
-  beginRampingMovement: 0
+  beginRampingMovement: 1
   jumpHeight: 0.11
   gravityValue: -60
 --- !u!1 &3967972890285937188
