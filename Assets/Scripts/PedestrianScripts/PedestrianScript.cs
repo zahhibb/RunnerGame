@@ -28,6 +28,7 @@ public class PedestrianScript : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             CrashOrSomething();
+            other.transform.GetComponent<PlayerController>().ToggleSmokeEffect(false);
         }
     }
 

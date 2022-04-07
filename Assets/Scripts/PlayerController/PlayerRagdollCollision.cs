@@ -50,6 +50,8 @@ public class PlayerRagdollCollision : MonoBehaviour
     {
         for (int i = 0; i < objectsToRagdoll.Count; i++)
         {
+            if (objectsToRagdoll[i] == null) return;
+
             SetupColliders(i);
             SetupRigidbody(i);
         }
@@ -83,5 +85,15 @@ public class PlayerRagdollCollision : MonoBehaviour
             objectsToRagdoll[index].GetComponent<Rigidbody>().drag = rigidbodyDrag;
             objectsToRagdoll[index].GetComponent<Rigidbody>().angularDrag = rigidbodyAngularDrag;
         }
+    }
+
+    public IEnumerator CleanUpObjects()
+    {
+        yield return new WaitForSeconds(2f);
+        for (int i = 0; i < objectsToRagdoll.Count; i++)
+        {
+            Destroy(objectsToRagdoll[i].gameObject);
+        }
+        Destroy(gameObject);
     }
 }

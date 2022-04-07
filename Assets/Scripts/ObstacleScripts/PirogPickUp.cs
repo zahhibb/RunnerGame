@@ -28,8 +28,10 @@ public class PirogPickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player")){
             OnPickUp(other.gameObject);
+            other.transform.GetComponent<PickupEffect>().PlayEffect();
+        }
     }
 
     public void OnPickUp(GameObject player)
