@@ -5,7 +5,8 @@ using UnityEngine;
 public class LevelGeneration : MonoBehaviour
 {
     public GameObject chunk;
-
+    public GameObject finalChunk;
+    GameManager gameManager;
 
     //Chunk prefabs
     public GameObject[] chunkPrefabs;
@@ -16,6 +17,7 @@ public class LevelGeneration : MonoBehaviour
     public int maxChunkCount = 0;
     int spawnDistance = 50;
 
+
     public GameObject[] obstacles;
     public GameObject pirog;
     public GameObject pirogVagn;
@@ -23,8 +25,11 @@ public class LevelGeneration : MonoBehaviour
     float currenTimer = 0;
     int chunkCounter = 0;
 
+    bool outOfTime = false;
+
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         for (int i = 0; i < 4; i++)
         {
             SpawnBlock();
@@ -49,9 +54,15 @@ public class LevelGeneration : MonoBehaviour
         int nextChunkDistance = chunkCounter * spawnDistance;
 
         //Chose a random chunk here
-         
-        placedChunks.Add(Instantiate(chunkPrefabs[ChoseRandomChunk()], Vector3.forward * nextChunkDistance, Quaternion.identity));
-        if (placedChunks.Count > maxChunkCount)
+        if(gameManager.GetTimer() > 30)
+        {
+            outOfTime = true;
+            placedChunks.Add(Instantiate(finalChunk, Vector3.forward * nextChunkDistance, Quaternion.identity));
+        }
+        else if(!outOfTime)
+            placedChunks.Add(Instantiate(chunkPrefabs[ChoseRandomChunk()], Vector3.forward * nextChunkDistance, Quaternion.identity));
+
+        if (placedChunks.Count > maxChunkCount && !outOfTime)
         {
             placedChunks[0].GetComponentInChildren<ChunkScript>().DestroyObstacles();
             Destroy(placedChunks[0]);
