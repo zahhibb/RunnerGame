@@ -16,7 +16,6 @@ public class LevelGeneration : MonoBehaviour
     public int maxChunkCount = 0;
     int spawnDistance = 50;
 
-
     public GameObject[] obstacles;
     public GameObject pirog;
     public GameObject pirogVagn;

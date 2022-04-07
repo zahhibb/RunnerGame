@@ -29,12 +29,14 @@ public class PlayerController : MonoBehaviour
     private UIManager uIManager;
     private GameManager gameManager;
     private SoundManager soundManager;
+    private ScreenShakeTrigger screenShake;
 
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         uIManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
         soundManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoundManager>();
+        screenShake = GetComponentInChildren<ScreenShakeTrigger>();
         controller = GetComponent<CharacterController>();
         playerRagdollCollision = transform.GetChild(0).GetComponent<PlayerRagdollCollision>();
         maxSpeed = movementSpeed;
@@ -127,19 +129,26 @@ public class PlayerController : MonoBehaviour
         controller.enabled = incomingState;
         GetComponent<PlayerController>().enabled = incomingState;
         playerRagdollCollision.StartRagdoll = true;
-        if(gameManager.GetPlayerLives() > -1)
+        if(gameManager.GetPlayerLives() > 0)
             StartCoroutine(DestroyCorpse());
+        else
+        {
+            //Die
+        }
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
+
         if (hit.transform.tag == "Obstacle" && invinciblePlayer == false)
         {
+            screenShake.CrashShake();
             soundManager.CrashSound();
             gameManager.TakeDamage();
             uIManager.UpdateLifes();
             ModifyPlayerState(false);
         }
+        
     }
 
     public void SpawnSafety()

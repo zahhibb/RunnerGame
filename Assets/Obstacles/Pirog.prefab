@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 1443508240214598512}
   m_Layer: 0
   m_Name: Pirog
-  m_TagString: Untagged
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f841d50798c52354d96cdf4af290fc12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointObj: {fileID: 5278477202035530890, guid: a8438a53fc2360d44b57c775b746ca06, type: 3}
 --- !u!1 &2428119319306456859
 GameObject:
   m_ObjectHideFlags: 0

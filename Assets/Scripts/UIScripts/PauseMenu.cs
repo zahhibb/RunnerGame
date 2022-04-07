@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour
 
     public Scene mainMenuScene;
 
-    bool paused = false;
+    public bool paused = false;
     bool settingsOpen = false;
 
     void Start()
@@ -47,6 +47,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
+        PauseGame();
         Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
     }
 

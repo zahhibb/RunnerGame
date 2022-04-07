@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scenes/FelixScene.unity.meta
 guid: 98795e1d407d6fd43b6e9c7b602577a4
+=======
+guid: 1de3c32a491600444b62c58309fdb399
+folderAsset: yes
+>>>>>>> FelixBranch:Assets/Resources.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

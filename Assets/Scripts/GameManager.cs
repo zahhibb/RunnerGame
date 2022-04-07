@@ -143,7 +143,6 @@ public class GameManager : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        print("SpawnedPlayer");
         //Instantiate(playerPrefab, spawnPoint, Quaternion.identity).GetComponent<PlayerController>().SpawnSafety();
         GameObject pc = Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
         pc.GetComponent<PlayerController>().SpawnSafety();
