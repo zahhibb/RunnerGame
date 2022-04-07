@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     private bool groundedPlayer;
 
+    [Header("Particles")]
+    [SerializeField] private ParticleSystem drivingSmokeParticle;
+
+    private ParticleSystem smokeParticleInstance;
     private Vector3 movementVector;
     private Vector2 movementClampPositions = new Vector2(-7f, 7f);
     private float currentSpeed = 0;
@@ -31,6 +35,9 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerRagdollCollision = transform.GetChild(0).GetComponent<PlayerRagdollCollision>();
         maxSpeed = movementSpeed;
+
+        smokeParticleInstance = Instantiate(drivingSmokeParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f), Quaternion.identity);
+        smokeParticleInstance.transform.parent = transform;
     }
 
     void Update()
@@ -126,6 +133,18 @@ public class PlayerController : MonoBehaviour
         if (hit.transform.tag == "Obstacle")
         {
             ModifyPlayerState(false);
+        }
+    }
+
+    private void ToggleSmokeEffect(bool value)
+    {
+        if (value)
+        {
+            smokeParticleInstance.Play();
+        }
+        else
+        {
+            smokeParticleInstance.Stop();
         }
     }
 }

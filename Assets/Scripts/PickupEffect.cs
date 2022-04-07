@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 public class PickupEffect : MonoBehaviour
 {
-    public Volume ppVolume;
+    public Volume postProcessingVolume;
 
     [SerializeField] private float newBloomValue = 10f;
     [SerializeField] private float bloomDuration = 2f;
@@ -17,16 +17,11 @@ public class PickupEffect : MonoBehaviour
 
     void Start()
     {
-        ppVolume.profile.TryGet<Bloom>(out bloom);
+        postProcessingVolume.profile.TryGet<Bloom>(out bloom);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            PlayEffect();
-        }
-
         if (beginRamp)
         {
             RampBloomDown();

@@ -902,7 +902,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1808,6 +1808,7 @@ GameObject:
   - component: {fileID: 1160769367438274077}
   - component: {fileID: 1160769367438274075}
   - component: {fileID: 1160769367438274072}
+  - component: {fileID: 2085710282}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1865,10 +1866,25 @@ MonoBehaviour:
   forwardMovementSpeed: 5
   rotationSpeed: 20
   accelerationSpeed: 2
-  maxSpeed: 30
   beginRampingMovement: 0
   jumpHeight: 0.11
   gravityValue: -60
+  drivingSmokeParticle: {fileID: 1594402512468545842, guid: 412e865d6411df8489e6a09365e110e8, type: 3}
+--- !u!114 &2085710282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160769367438274079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cbfcb282b6372148b98f6ea2647872e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ppVolume: {fileID: 0}
+  newBloomValue: 10
+  bloomDuration: 0.5
 --- !u!1 &3967972890285937188
 GameObject:
   m_ObjectHideFlags: 0
