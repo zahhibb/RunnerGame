@@ -513,7 +513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1160769367438274077, guid: 1037cbfb4b7b36a44bdba5a8e6cf3ade, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 1160769367438274077, guid: 1037cbfb4b7b36a44bdba5a8e6cf3ade, type: 3}
       propertyPath: m_LocalPosition.y
@@ -521,7 +521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1160769367438274077, guid: 1037cbfb4b7b36a44bdba5a8e6cf3ade, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.52
+      value: -4.2
       objectReference: {fileID: 0}
     - target: {fileID: 1160769367438274077, guid: 1037cbfb4b7b36a44bdba5a8e6cf3ade, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1257,6 +1257,7 @@ MonoBehaviour:
   pirogCount: {fileID: 1299423436}
   scoreCount: {fileID: 1078688194}
   scoreMultiplier: {fileID: 799890989}
+  endScreen: {fileID: 8083144560275393351, guid: 21f4a72c7dc0b1c4080e9f162a65c625, type: 3}
 --- !u!114 &1876467291
 MonoBehaviour:
   m_ObjectHideFlags: 0
