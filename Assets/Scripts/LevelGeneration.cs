@@ -16,7 +16,6 @@ public class LevelGeneration : MonoBehaviour
     public int maxChunkCount = 0;
     int spawnDistance = 50;
 
-
     public GameObject[] obstacles;
     public GameObject pirog;
     public GameObject pirogVagn;
@@ -26,7 +25,7 @@ public class LevelGeneration : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             SpawnBlock();
         }
@@ -34,15 +33,15 @@ public class LevelGeneration : MonoBehaviour
 
     void Update()
     {
-        if(currenTimer < maxTimer)
-        {
-            currenTimer += Time.deltaTime;
-        }
-        else
-        {
-            SpawnBlock();
-            currenTimer = 0;
-        }
+        //if(currenTimer < maxTimer)
+        //{
+        //    currenTimer += Time.deltaTime;
+        //}
+        //else
+        //{
+        //    SpawnBlock();
+        //    currenTimer = 0;
+        //}
     }
 
     public void SpawnBlock()

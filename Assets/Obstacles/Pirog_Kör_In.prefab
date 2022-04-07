@@ -733,8 +733,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8025106136285287005}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.2527421, y: 0.15, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.2527421, y: 0.31, z: 0}
+  m_LocalScale: {x: 1.4123, y: 1.4123, z: 1.4123}
   m_Children:
   - {fileID: 8025106136284905085}
   m_Father: {fileID: 8025106137467687719}
@@ -866,7 +866,7 @@ GameObject:
   - component: {fileID: 9179025591742130421}
   m_Layer: 0
   m_Name: "Pirog_K\xF6r_In"
-  m_TagString: Untagged
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -911,8 +911,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.676861, y: 1.7019349, z: 1.6066549}
-  m_Center: {x: -0.028434157, y: 1.02, z: -0.013679147}
+  m_Size: {x: 2.676861, y: 2.6294887, z: 2.1366856}
+  m_Center: {x: -0.028434157, y: 1.4837769, z: -0.013679147}
 --- !u!54 &9179025591742130421
 Rigidbody:
   m_ObjectHideFlags: 0

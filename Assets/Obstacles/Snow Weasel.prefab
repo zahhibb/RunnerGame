@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6913419600020319823}
   m_Layer: 0
   m_Name: Snow Weasel
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,6 +128,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7192041002679731900, guid: 1b2a1f5be9a097e4d901c6194addbcf7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6248
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192041002679731900, guid: 1b2a1f5be9a097e4d901c6194addbcf7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6248
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192041002679731900, guid: 1b2a1f5be9a097e4d901c6194addbcf7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6248
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192041002679731900, guid: 1b2a1f5be9a097e4d901c6194addbcf7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -184,6 +196,18 @@ PrefabInstance:
     - target: {fileID: 7775239286468833737, guid: 1931ba9278a85084ea1d6bb80de4f4f8, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775239286468833737, guid: 1931ba9278a85084ea1d6bb80de4f4f8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6248
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775239286468833737, guid: 1931ba9278a85084ea1d6bb80de4f4f8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6248
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775239286468833737, guid: 1931ba9278a85084ea1d6bb80de4f4f8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6248
       objectReference: {fileID: 0}
     - target: {fileID: 7775239286468833737, guid: 1931ba9278a85084ea1d6bb80de4f4f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -252,6 +276,18 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7984742909547571004, guid: 2e6a479dc1c18f447a95d661979296ae, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6248
+      objectReference: {fileID: 0}
+    - target: {fileID: 7984742909547571004, guid: 2e6a479dc1c18f447a95d661979296ae, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6248
+      objectReference: {fileID: 0}
+    - target: {fileID: 7984742909547571004, guid: 2e6a479dc1c18f447a95d661979296ae, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6248
+      objectReference: {fileID: 0}
+    - target: {fileID: 7984742909547571004, guid: 2e6a479dc1c18f447a95d661979296ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -308,6 +344,18 @@ PrefabInstance:
     - target: {fileID: 2215213353558860198, guid: 44f3ec3bdaf7c1846bf4d25cf6be0fc2, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215213353558860198, guid: 44f3ec3bdaf7c1846bf4d25cf6be0fc2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215213353558860198, guid: 44f3ec3bdaf7c1846bf4d25cf6be0fc2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215213353558860198, guid: 44f3ec3bdaf7c1846bf4d25cf6be0fc2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6248
       objectReference: {fileID: 0}
     - target: {fileID: 2215213353558860198, guid: 44f3ec3bdaf7c1846bf4d25cf6be0fc2, type: 3}
       propertyPath: m_LocalPosition.x

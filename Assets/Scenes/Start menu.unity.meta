@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scenes/Start menu.unity.meta
 guid: 15421c8f5c1fc9c469297edc509cc29c
 DefaultImporter:
+=======
+guid: 200dfae28a1657743899b4697776f29c
+PrefabImporter:
+>>>>>>> FelixBranch:Assets/Prefabs/CamHandler.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

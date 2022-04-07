@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravityValue = -60f;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
+    private bool invinciblePlayer = false;
 
     [Header("Particles")]
     [SerializeField] private ParticleSystem drivingSmokeParticle;
@@ -29,13 +30,21 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController controller;
     private PlayerRagdollCollision playerRagdollCollision;
+    private UIManager uIManager;
+    private GameManager gameManager;
+    private SoundManager soundManager;
+    private ScreenShakeTrigger screenShake;
 
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        uIManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
+        soundManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoundManager>();
+        screenShake = GetComponentInChildren<ScreenShakeTrigger>();
         controller = GetComponent<CharacterController>();
         playerRagdollCollision = transform.GetChild(0).GetComponent<PlayerRagdollCollision>();
         maxSpeed = movementSpeed;
-
+        currentSpeed = movementSpeed / 3;
         smokeParticleInstance = Instantiate(drivingSmokeParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f), Quaternion.identity);
         smokeParticleInstance.transform.parent = transform;
     }
@@ -102,7 +111,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             beginRampingMovement = false;
-            currentSpeed = 0;
+            currentSpeed = movementSpeed / 3;
         }
         controller.Move(movementVector * currentSpeed * Time.deltaTime);
     }
@@ -126,14 +135,45 @@ public class PlayerController : MonoBehaviour
         controller.enabled = incomingState;
         GetComponent<PlayerController>().enabled = incomingState;
         playerRagdollCollision.StartRagdoll = true;
+        if(gameManager.GetPlayerLives() > 0)
+            StartCoroutine(DestroyCorpse());
+        else
+        {
+            //Die
+        }
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.transform.tag == "Obstacle")
+
+        if (hit.transform.tag == "Obstacle" && invinciblePlayer == false)
         {
+            screenShake.CrashShake();
+            soundManager.CrashSound();
+            gameManager.TakeDamage();
+            uIManager.UpdateLifes();
             ModifyPlayerState(false);
         }
+        
+    }
+
+    public void SpawnSafety()
+    {
+        invinciblePlayer = true;
+        StartCoroutine(BecomeVulnerable());
+    }
+
+    IEnumerator DestroyCorpse()
+    {
+        yield return new WaitForSeconds(1);
+        gameManager.SpawnPlayer();
+        Destroy(gameObject);
+    }
+
+    IEnumerator BecomeVulnerable()
+    {
+        yield return new WaitForSeconds(1.5f);
+        invinciblePlayer = false;
     }
 
     private void ToggleSmokeEffect(bool value)

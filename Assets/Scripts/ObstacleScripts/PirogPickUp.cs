@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class PirogPickUp : MonoBehaviour
 {
+    GameManager gameManager;
+    UIManager uiManager;
+    SoundManager soundManager;
+    ScreenShakeTrigger screenShake;
+    Canvas canvas;
+    public GameObject pointObj;
 
     void Start()
     {
-        
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        uiManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
+        soundManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoundManager>();
+        screenShake = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<ScreenShakeTrigger>();
+        canvas = GameObject.Find("GameplayUI").GetComponent<Canvas>();
     }
 
 
@@ -19,12 +29,18 @@ public class PirogPickUp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
-            OnPickUp();
+            OnPickUp(other.gameObject);
     }
 
-    public void OnPickUp()
+    public void OnPickUp(GameObject player)
     {
-        print("Picked Up");
+        Instantiate(pointObj, canvas.transform);
+        player.GetComponentInChildren<ScreenShakeTrigger>().PickUpShake();
+        soundManager.PirogPickSound();
+        gameManager.IncreasePirogi();
+        uiManager.UpdatePirogCount();
+        gameManager.IncreaseMultiplier();
+        uiManager.UpdatePirogMultiplier();
         Destroy(gameObject);
     }
 
