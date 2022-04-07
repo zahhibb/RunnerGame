@@ -54,7 +54,7 @@ public class LevelGeneration : MonoBehaviour
         int nextChunkDistance = chunkCounter * spawnDistance;
 
         //Chose a random chunk here
-        if(gameManager.GetTimer() > 30)
+        if(gameManager.GetTimer() > 5)
         {
             outOfTime = true;
             placedChunks.Add(Instantiate(finalChunk, Vector3.forward * nextChunkDistance, Quaternion.identity));

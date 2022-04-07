@@ -507,14 +507,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1160769367438274072, guid: 1037cbfb4b7b36a44bdba5a8e6cf3ade, type: 3}
-      propertyPath: movementSpeed
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1160769367438274072, guid: 1037cbfb4b7b36a44bdba5a8e6cf3ade, type: 3}
-      propertyPath: accelerationSpeed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1160769367438274077, guid: 1037cbfb4b7b36a44bdba5a8e6cf3ade, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1437,6 +1429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunk: {fileID: 5787971592397634806, guid: 5f1974f1ffb4d5845ba9fdd12ea265a5, type: 3}
+  finalChunk: {fileID: 848406226122775134, guid: 25cb69253a72ae94fbc917358622b5fc, type: 3}
   chunkPrefabs:
   - {fileID: 8043383220675763428, guid: 13c55a8e8238395479433c9a6ed712b7, type: 3}
   - {fileID: 3300870822669134021, guid: 0c55ee064259b624cbe8d0b5c89d96f4, type: 3}
@@ -1453,7 +1446,6 @@ MonoBehaviour:
   - {fileID: 9068570514973951624, guid: 8125e4e7e8424044580d8ac7ed5eedaa, type: 3}
   - {fileID: 6359599634425085608, guid: f8d93d09d24f99f46bc5aeedad685013, type: 3}
   - {fileID: 1406550433141490762, guid: 67fae77952ebe0943a547bdb3a4bb13b, type: 3}
-  - {fileID: 8088340825809239381, guid: d9dab704fe275bf45b0cf28c26f91dae, type: 3}
   - {fileID: 8088340825809239381, guid: d9dab704fe275bf45b0cf28c26f91dae, type: 3}
   - {fileID: 8088340825809239381, guid: d9dab704fe275bf45b0cf28c26f91dae, type: 3}
   pirog: {fileID: 2428119319018979375, guid: 1d9fdd32dd709fd409791462c055996b, type: 3}
