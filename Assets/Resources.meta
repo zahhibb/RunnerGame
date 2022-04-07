@@ -1,6 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<<< HEAD:Assets/Resources.meta
 guid: 1de3c32a491600444b62c58309fdb399
 folderAsset: yes
+========
+guid: 98795e1d407d6fd43b6e9c7b602577a4
+>>>>>>>> Sebbe_Branch:Assets/Scenes/FelixScene.unity.meta
+=======
+guid: ea6b326c0591ff54c9ca19522513e115
+folderAsset: yes
+>>>>>>> Sebbe_Branch
 DefaultImporter:
   externalObjects: {}
   userData: 

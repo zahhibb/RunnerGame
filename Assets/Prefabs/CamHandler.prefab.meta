@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/CamHandler.prefab.meta
 guid: 200dfae28a1657743899b4697776f29c
 PrefabImporter:
+========
+guid: 15421c8f5c1fc9c469297edc509cc29c
+DefaultImporter:
+>>>>>>>> Sebbe_Branch:Assets/Scenes/Start menu.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
