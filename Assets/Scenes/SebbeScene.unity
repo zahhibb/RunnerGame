@@ -509,11 +509,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1160769367438274072, guid: 1037cbfb4b7b36a44bdba5a8e6cf3ade, type: 3}
       propertyPath: movementSpeed
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1160769367438274072, guid: 1037cbfb4b7b36a44bdba5a8e6cf3ade, type: 3}
       propertyPath: accelerationSpeed
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1160769367438274077, guid: 1037cbfb4b7b36a44bdba5a8e6cf3ade, type: 3}
       propertyPath: m_RootOrder
