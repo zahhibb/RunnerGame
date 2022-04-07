@@ -901,6 +901,7 @@ MonoBehaviour:
   scoreAmount: 0
   piroger: 0
   pointsObj: {fileID: 5278477202035530890, guid: b07ffedbb26514b48b20eb9ce4b9b118, type: 3}
+  explosionParticle: {fileID: 4178827418391108989, guid: d3e1075a81ae0bb4099e12e0e424d570, type: 3}
 --- !u!65 &4636040904536934721
 BoxCollider:
   m_ObjectHideFlags: 0

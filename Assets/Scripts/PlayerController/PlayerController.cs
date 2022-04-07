@@ -166,6 +166,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator DestroyCorpse()
     {
         yield return new WaitForSeconds(1);
+        playerRagdollCollision.CleanUpObjects();
         gameManager.SpawnPlayer();
         Destroy(gameObject);
     }
@@ -176,7 +177,7 @@ public class PlayerController : MonoBehaviour
         invinciblePlayer = false;
     }
 
-    private void ToggleSmokeEffect(bool value)
+    public void ToggleSmokeEffect(bool value)
     {
         if (value)
         {

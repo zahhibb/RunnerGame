@@ -87,13 +87,11 @@ public class PlayerRagdollCollision : MonoBehaviour
         }
     }
 
-    public IEnumerator CleanUpObjects()
+    public void CleanUpObjects()
     {
-        yield return new WaitForSeconds(2f);
         for (int i = 0; i < objectsToRagdoll.Count; i++)
         {
             Destroy(objectsToRagdoll[i].gameObject);
         }
-        Destroy(gameObject);
     }
 }
