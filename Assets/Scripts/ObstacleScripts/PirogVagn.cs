@@ -7,10 +7,12 @@ public class PirogVagn : MonoBehaviour
     GameManager gameManager;
     UIManager uiManager;
     SoundManager soundManager;
+    Canvas canvas;
 
     public int scoreAmount = 0;
     public int piroger = 0;
 
+    public GameObject pointsObj;
 
 
     void Start()
@@ -18,6 +20,7 @@ public class PirogVagn : MonoBehaviour
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         uiManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
         soundManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoundManager>();
+        canvas = GameObject.Find("GameplayUI").GetComponent<Canvas>();
     }
 
     void Update()
@@ -38,6 +41,10 @@ public class PirogVagn : MonoBehaviour
         //DO everything else before destroying the gameobject
         if(gameManager.GetTotalPirogis() >= 1)
         {
+
+            GameObject tempObj = Instantiate(pointsObj, canvas.transform);
+            tempObj.GetComponent<PointPrefab>().SetPoints(gameManager.GetTotalPoints());
+
             soundManager.PirogVagnSound();
             gameManager.ScoreIncrease();
             gameManager.DecreasePirogi();

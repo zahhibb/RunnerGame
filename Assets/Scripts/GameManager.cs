@@ -80,6 +80,11 @@ public class GameManager : MonoBehaviour
         return pirogMultiplier;
     }
 
+    public int GetTotalPoints()
+    {
+        return pirogMultiplier * currentPirogis;
+    }
+
     // Update is called once per frame
     void Update()
     {   

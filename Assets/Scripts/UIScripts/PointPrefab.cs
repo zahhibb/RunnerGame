@@ -33,6 +33,11 @@ public class PointPrefab : MonoBehaviour
 
     public void SetPoints(int pointAmount)
     {
-        pointText.text = "+" + pointAmount.ToString();
+        if(pointAmount == 69 || pointAmount == 420)
+        {
+            pointText.text = "+" + pointAmount.ToString() + "  Nice!!";
+        }
+        else
+            pointText.text = "+" + pointAmount.ToString();
     }
 }
