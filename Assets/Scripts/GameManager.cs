@@ -80,6 +80,11 @@ public class GameManager : MonoBehaviour
         return pirogMultiplier;
     }
 
+    public int GetTotalPoints()
+    {
+        return pirogMultiplier * currentPirogis;
+    }
+
     // Update is called once per frame
     void Update()
     {   
@@ -90,6 +95,7 @@ public class GameManager : MonoBehaviour
             Debug.Log(GetTotalPirogis());
         }
 
+        GameTimer = GameTimer + Time.deltaTime;
         //test for picking up pirogis
         // if (Input.GetKeyDown(KeyCode.LeftControl))
         // {
@@ -112,18 +118,18 @@ public class GameManager : MonoBehaviour
             //Pause Game?
         }
 
-        if (GameTimer >= GameTimerGoal)
-        {
-            //Show Debrief Menu for Winning
-            //Stop Level Generation
-            //Prevent Respawn
-            //Pause Game?
-        }
-        else
-        {
-            GameTimer = GameTimer + Time.deltaTime;
-            //Debug.Log(GameTimer);
-        }
+        //if (GameTimer >= GameTimerGoal)
+        //{
+        //    //Show Debrief Menu for Winning
+        //    //Stop Level Generation
+        //    //Prevent Respawn
+        //    //Pause Game?
+        //}
+        //else
+        //{
+        //    GameTimer = GameTimer + Time.deltaTime;
+        //    //Debug.Log(GameTimer);
+        //}
 
         if (goalLevelComplete)
         {
@@ -172,6 +178,11 @@ public void SetGoalNoDamageTaken()
     public void TakeDamage()
     {
         PlayerLives -= 1;
+    }
+
+    public float GetTimer()
+    {
+        return GameTimer;
     }
 
     public int GetPlayerLives() // UI Manager will see this
