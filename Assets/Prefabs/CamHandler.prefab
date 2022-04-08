@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31efdd5347ed3f447bd2a1a005f110c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Magnitude: 0.5
+  crashMagnitude: 0
+  pickUpMagnitude: 0
   screenShake: {fileID: 7027623835455095979}
 --- !u!1 &7027623835455095956
 GameObject:
@@ -153,7 +154,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

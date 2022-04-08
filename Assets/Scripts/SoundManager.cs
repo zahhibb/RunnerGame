@@ -9,16 +9,15 @@ public class SoundManager : MonoBehaviour
     public GameObject crashSound;
     public GameObject winSound;
     public GameObject loseSound;
-    GameObject player;
+
+    [SerializeField] private GameObject spinningSound;
+    [SerializeField] private GameObject spinningSound2;
+
+    private GameObject player;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-    }
-
-    void Update()
-    {
-        
     }
 
     public void SetPlayer(GameObject incomingObj)
@@ -54,6 +53,21 @@ public class SoundManager : MonoBehaviour
     {
         GameObject sound = Instantiate(loseSound, player.transform.position, Quaternion.identity);
         StartCoroutine(DestroySound(sound));
+    }
+
+    public void RandomSpinningSound()
+    {
+        GameObject sound = null;
+        var randomValue = Random.Range(0, 5);
+
+        if (randomValue == 4)
+        {
+            sound = Instantiate(spinningSound, player.transform.position, Quaternion.identity);
+        }
+        else
+        {
+            sound = Instantiate(spinningSound2, player.transform.position, Quaternion.identity);
+        }
     }
 
     IEnumerator DestroySound(GameObject soundObj)

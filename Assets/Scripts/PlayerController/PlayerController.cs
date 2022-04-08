@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour
         currentSpeed = movementSpeed / 3;
         smokeParticleInstance = Instantiate(drivingSmokeParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f), Quaternion.identity);
         smokeParticleInstance.transform.parent = transform;
+        transform.GetChild(0).GetComponent<Animator>().enabled = false;
+
+        SpawnSafety();
     }
 
     void Update()
@@ -129,18 +132,29 @@ public class PlayerController : MonoBehaviour
         return Quaternion.identity;
     }
 
-    private void ModifyPlayerState(bool incomingState)
+    public void ModifyPlayerState(bool incomingState, bool isExternal)
     {
-        // transform.GetChild(0).gameObject.SetActive(incomingState);
-        controller.enabled = incomingState;
-        GetComponent<PlayerController>().enabled = incomingState;
-        playerRagdollCollision.StartRagdoll = true;
-        if(gameManager.GetPlayerLives() > 0)
-            StartCoroutine(DestroyCorpse());
+        if (isExternal)
+        {
+            if (gameManager.GetPlayerLives() <= 0)
+            {
+                controller.enabled = incomingState;
+                GetComponent<PlayerController>().enabled = incomingState;
+                uIManager.ReloadLevel();
+            }
+        }
         else
         {
-            soundManager.PlayLoseSound();
-            uIManager.ReloadLevel();
+            controller.enabled = incomingState;
+            GetComponent<PlayerController>().enabled = incomingState;
+            playerRagdollCollision.StartRagdoll = true;
+            if (gameManager.GetPlayerLives() > 0)
+                StartCoroutine(DestroyCorpse());
+            else
+            {
+                soundManager.PlayLoseSound();
+                uIManager.ReloadLevel();
+            }
         }
     }
 
@@ -153,9 +167,8 @@ public class PlayerController : MonoBehaviour
             soundManager.CrashSound();
             gameManager.TakeDamage();
             uIManager.UpdateLifes();
-            ModifyPlayerState(false);
+            ModifyPlayerState(false, false);
         }
-        
     }
 
     public void SpawnSafety()
@@ -167,6 +180,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator DestroyCorpse()
     {
         yield return new WaitForSeconds(1);
+        playerRagdollCollision.CleanUpObjects();
         gameManager.SpawnPlayer();
         Destroy(gameObject);
     }
@@ -177,7 +191,7 @@ public class PlayerController : MonoBehaviour
         invinciblePlayer = false;
     }
 
-    private void ToggleSmokeEffect(bool value)
+    public void ToggleSmokeEffect(bool value)
     {
         if (value)
         {

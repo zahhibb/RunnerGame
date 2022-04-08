@@ -6,17 +6,18 @@ using UnityEngine.Rendering.Universal;
 
 public class PickupEffect : MonoBehaviour
 {
-    public Volume postProcessingVolume;
 
     [SerializeField] private float newBloomValue = 10f;
     [SerializeField] private float bloomDuration = 2f;
 
+    private Volume postProcessingVolume;
     private Bloom bloom;
     private bool beginRamp;
     private float remainingBloomTime = 2f;
 
     void Start()
     {
+        postProcessingVolume = GameObject.Find("PostProcessingVolume").GetComponent<Volume>();
         postProcessingVolume.profile.TryGet<Bloom>(out bloom);
     }
 
@@ -28,7 +29,7 @@ public class PickupEffect : MonoBehaviour
         }
     }
 
-    private void PlayEffect()
+    public void PlayEffect()
     {
         bloom.intensity.value = newBloomValue;
         remainingBloomTime = bloomDuration;

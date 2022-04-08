@@ -6,11 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
     public GameObject pauseCanvas;
     public GameObject settingsMenu;
-
-    public string mainMenuScene;
 
     public bool paused = false;
     bool settingsOpen = false;

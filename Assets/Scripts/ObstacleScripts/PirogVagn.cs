@@ -13,7 +13,7 @@ public class PirogVagn : MonoBehaviour
     public int piroger = 0;
 
     public GameObject pointsObj;
-
+    public ParticleSystem explosionParticle;
 
     void Start()
     {
@@ -25,12 +25,12 @@ public class PirogVagn : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             HitPirogTruck();
         }
@@ -39,7 +39,7 @@ public class PirogVagn : MonoBehaviour
     public void HitPirogTruck()
     {
         //DO everything else before destroying the gameobject
-        if(gameManager.GetTotalPirogis() >= 1)
+        if (gameManager.GetTotalPirogis() >= 1)
         {
 
             GameObject tempObj = Instantiate(pointsObj, canvas.transform);
@@ -54,6 +54,8 @@ public class PirogVagn : MonoBehaviour
             uiManager.UpdateScoreCount();
         }
 
+        var particleInstance = Instantiate(explosionParticle, transform.position, Quaternion.identity);
+        Destroy(particleInstance, 2f);
         Destroy(gameObject);
     }
 }
