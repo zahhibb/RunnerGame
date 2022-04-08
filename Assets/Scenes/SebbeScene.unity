@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunk: {fileID: 5787971592397634806, guid: 5f1974f1ffb4d5845ba9fdd12ea265a5, type: 3}
-  finalChunk: {fileID: 0}
+  finalChunk: {fileID: 848406226122775134, guid: 25cb69253a72ae94fbc917358622b5fc, type: 3}
   chunkPrefabs:
   - {fileID: 8043383220675763428, guid: 13c55a8e8238395479433c9a6ed712b7, type: 3}
   - {fileID: 3300870822669134021, guid: 0c55ee064259b624cbe8d0b5c89d96f4, type: 3}
