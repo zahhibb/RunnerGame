@@ -7,6 +7,7 @@ public class LevelGeneration : MonoBehaviour
     public GameObject chunk;
     public GameObject finalChunk;
     GameManager gameManager;
+    
 
     //Chunk prefabs
     public GameObject[] chunkPrefabs;
@@ -26,10 +27,12 @@ public class LevelGeneration : MonoBehaviour
     int chunkCounter = 0;
 
     bool outOfTime = false;
+    bool shouldSpawn = true;
 
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        
         for (int i = 0; i < 4; i++)
         {
             SpawnBlock();
@@ -51,6 +54,8 @@ public class LevelGeneration : MonoBehaviour
 
     public void SpawnBlock()
     {
+        if (!shouldSpawn)
+            return;
         int nextChunkDistance = chunkCounter * spawnDistance;
 
         //Chose a random chunk here
@@ -58,6 +63,7 @@ public class LevelGeneration : MonoBehaviour
         {
             outOfTime = true;
             placedChunks.Add(Instantiate(finalChunk, Vector3.forward * nextChunkDistance, Quaternion.identity));
+            shouldSpawn = false;
         }
         else if(!outOfTime)
             placedChunks.Add(Instantiate(chunkPrefabs[ChoseRandomChunk()], Vector3.forward * nextChunkDistance, Quaternion.identity));
@@ -70,6 +76,8 @@ public class LevelGeneration : MonoBehaviour
         }
         chunkCounter++;
     }
+
+    
 
     public int ChoseRandomChunk()
     {

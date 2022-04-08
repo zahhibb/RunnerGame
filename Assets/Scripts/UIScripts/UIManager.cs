@@ -16,11 +16,13 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI pirogCount;
     public TextMeshProUGUI scoreCount;
     public TextMeshProUGUI scoreMultiplier;
-
+    public GameObject endScreen;
+    Canvas canvas;
 
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        canvas = GameObject.Find("GameplayUI").GetComponent<Canvas>();
     }
 
     void Update()
@@ -55,6 +57,11 @@ public class UIManager : MonoBehaviour
     public void UpdatePirogMultiplier()
     {
         scoreMultiplier.text = "x" + gameManager.GetTotalPirogMultiplier().ToString();
+    }
+
+    public void ReloadLevel()
+    {
+        Instantiate(endScreen, canvas.transform);
     }
 
 }

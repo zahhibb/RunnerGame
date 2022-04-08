@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EndScript : MonoBehaviour
 {
     public GameObject endScreen;
+    Canvas canvas;
+
+    private void Awake()
+    {
+        canvas = GameObject.Find("GameplayUI").GetComponent<Canvas>();
+    }
 
     void Start()
     {
-        endScreen.SetActive(false);
+        //endScreen.SetActive(false);
     }
 
     void Update()
@@ -20,7 +27,8 @@ public class EndScript : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            endScreen.SetActive(true);
+            Instantiate(endScreen, canvas.transform);
+            
         }
     }
 }

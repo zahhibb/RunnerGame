@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(DestroyCorpse());
         else
         {
-            //Die
+            uIManager.ReloadLevel();
         }
     }
 
@@ -187,5 +187,10 @@ public class PlayerController : MonoBehaviour
         {
             smokeParticleInstance.Stop();
         }
+    }
+
+    public void StopPlayer()
+    {
+        forwardMovementSpeed = 0;
     }
 }
