@@ -1226,6 +1226,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4278216959
       objectReference: {fileID: 0}
+    - target: {fileID: 4040085612144593526, guid: 0bc2dd165c8e7bb4287b45e111540fb7, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bc2dd165c8e7bb4287b45e111540fb7, type: 3}
 --- !u!1 &1344977943 stripped
@@ -1561,7 +1565,7 @@ MonoBehaviour:
   - {fileID: 3753781836695814389, guid: 2ed2cb06f9099b14d9e286bb4abcac36, type: 3}
   - {fileID: 6037177404462748118, guid: bfd5119d9542f9a40ad42e0cdc7525d4, type: 3}
   - {fileID: 848406226122775134, guid: 336b86c2a1d85ad4a8f889915fd5a044, type: 3}
-  maxTimer: 10
+  maxTimer: 50
   maxChunkCount: 9
   obstacles:
   - {fileID: 6516630987671628504, guid: 65f1a7d98cdd50443abb3368576c90f9, type: 3}

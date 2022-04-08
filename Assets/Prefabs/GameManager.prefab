@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pirogPickUp: {fileID: 4288909394517331012, guid: c6c8a42e5589bcc479cf70cffd754411, type: 3}
-  pirogVagnSound: {fileID: 3646243528153372538, guid: 2e7a463053f94be48820f753bfe4fe0c, type: 3}
+  pirogVagnSound: {fileID: 3646243528153372538, guid: 7307fd76c58ba974a9664459c0583596, type: 3}
   crashSound: {fileID: 2845047694675247844, guid: aa498b02325da154d9b0306295ac7ed3, type: 3}
   winSound: {fileID: 3646243528153372538, guid: 164404e5d0bf4434eb9cc047303a1630, type: 3}
   loseSound: {fileID: 3646243528153372538, guid: 75311cab25a58a045b7f775b27e6da76, type: 3}
