@@ -25,11 +25,6 @@ public class UIManager : MonoBehaviour
         canvas = GameObject.Find("GameplayUI").GetComponent<Canvas>();
     }
 
-    void Update()
-    {
-        
-    }
-
     public void UpdateLifes()
     {
 
@@ -63,5 +58,4 @@ public class UIManager : MonoBehaviour
     {
         Instantiate(endScreen, canvas.transform);
     }
-
 }

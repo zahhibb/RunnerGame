@@ -13,16 +13,6 @@ public class EndScript : MonoBehaviour
         canvas = GameObject.Find("GameplayUI").GetComponent<Canvas>();
     }
 
-    void Start()
-    {
-        //endScreen.SetActive(false);
-    }
-
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
+
     void Start()
     {
         soundManager = GetComponent<SoundManager>();
@@ -41,11 +42,11 @@ public class GameManager : MonoBehaviour
     {
         return currentPirogis;
     }
-    
+
     //Method to decrease pirogi amount on delivery/sale
     public void DecreasePirogi()
     {
-        if (currentPirogis <=0)
+        if (currentPirogis <= 0)
             return;
 
         currentPirogis = 0;
@@ -87,15 +88,14 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         //test for decreasing pirogi value
-        if (Input.GetKeyDown(KeyCode.CapsLock))
-        {
-            DecreasePirogi();
-            Debug.Log(GetTotalPirogis());
-        }
+        // if (Input.GetKeyDown(KeyCode.CapsLock))
+        // {
+        //     DecreasePirogi();
+        //     Debug.Log(GetTotalPirogis());
+        // }
 
-        GameTimer = GameTimer + Time.deltaTime;
         //test for picking up pirogis
         // if (Input.GetKeyDown(KeyCode.LeftControl))
         // {
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
         //     Debug.Log(GetTotalScore());
         // }
 
-        if (PlayerLives <= 0) //Lose State
+        if (PlayerLives <= 0)
         {
             //Show Debrief Menu for Losing
             //Stop Level Generation
@@ -118,18 +118,18 @@ public class GameManager : MonoBehaviour
             //Pause Game?
         }
 
-        //if (GameTimer >= GameTimerGoal)
-        //{
-        //    //Show Debrief Menu for Winning
-        //    //Stop Level Generation
-        //    //Prevent Respawn
-        //    //Pause Game?
-        //}
-        //else
-        //{
-        //    GameTimer = GameTimer + Time.deltaTime;
-        //    //Debug.Log(GameTimer);
-        //}
+        if (GameTimer >= GameTimerGoal)
+        {
+            //Show Debrief Menu for Winning
+            //Stop Level Generation
+            //Prevent Respawn
+            //Pause Game?
+        }
+        else
+        {
+            GameTimer = GameTimer + Time.deltaTime;
+            //Debug.Log(GameTimer);
+        }
 
         if (goalLevelComplete)
         {
@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
         GameObject pc = Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
         pc.GetComponent<PlayerController>().SpawnSafety();
         soundManager.SetPlayer(pc);
-        
+
     }
 
     public void SetSpawnPoint(Vector3 spawnPos)
@@ -162,19 +162,19 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetGoalLevelComplete()
-{
-goalLevelComplete = true;
-}
+    {
+        goalLevelComplete = true;
+    }
 
-public void SetGoalDeliveredPirogis()
-{
-    goalDeliveredPirogis = true;
-}
+    public void SetGoalDeliveredPirogis()
+    {
+        goalDeliveredPirogis = true;
+    }
 
-public void SetGoalNoDamageTaken()
-{
-    goalNoDamageTaken = true;
-}
+    public void SetGoalNoDamageTaken()
+    {
+        goalNoDamageTaken = true;
+    }
     public void TakeDamage()
     {
         PlayerLives -= 1;
@@ -185,7 +185,7 @@ public void SetGoalNoDamageTaken()
         return GameTimer;
     }
 
-    public int GetPlayerLives() // UI Manager will see this
+    public int GetPlayerLives()
     {
         return PlayerLives;
     }

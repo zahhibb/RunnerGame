@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7294196428873014911}
   - component: {fileID: 7294196428873014910}
+  - component: {fileID: 1876467290}
+  - component: {fileID: 1876467291}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -43,3 +45,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8e1432404eb8a49ab4a9e4bb8e45b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 1160769367438274079, guid: 1037cbfb4b7b36a44bdba5a8e6cf3ade, type: 3}
+--- !u!114 &1876467290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7294196428873014908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c030ec1af7632f4da9071718209471a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  pirogCount: {fileID: 0}
+  scoreCount: {fileID: 0}
+  scoreMultiplier: {fileID: 0}
+  endScreen: {fileID: 8083144560275393351, guid: 21f4a72c7dc0b1c4080e9f162a65c625, type: 3}
+--- !u!114 &1876467291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7294196428873014908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746dfcc52c8480445832b71b7f8e17d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pirogPickUp: {fileID: 4288909394517331012, guid: c6c8a42e5589bcc479cf70cffd754411, type: 3}
+  pirogVagnSound: {fileID: 3646243528153372538, guid: 2e7a463053f94be48820f753bfe4fe0c, type: 3}
+  crashSound: {fileID: 2845047694675247844, guid: aa498b02325da154d9b0306295ac7ed3, type: 3}
+  spinningSound: {fileID: 1051868733325352909, guid: 7a790db6dbaf228499708cfe9e791f45, type: 3}
+  spinningSound2: {fileID: 6533697030366879963, guid: 569c774382131a145b1e8ea1473ed7a3, type: 3}
