@@ -25,9 +25,9 @@ public class PuddleScript : MonoBehaviour
             childTransformAnimator.SetBool("StartSpinning", true);
             StartCoroutine(StopSpinning(childTransformAnimator));
             soundManager.RandomSpinningSound();
-            gameManagerObject.GetComponent<GameManager>().TakeDamage();
-            uiManager.UpdateLifes();
-            other.transform.GetComponent<PlayerController>().ModifyPlayerState(false, true);
+            // gameManagerObject.GetComponent<GameManager>().TakeDamage();
+            // uiManager.UpdateLifes();
+            // other.transform.GetComponent<PlayerController>().ModifyPlayerState(false, true);
         }
     }
 

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1160769367438274079, guid: 1037cbfb4b7b36a44bdba5a8e6cf3ade, type: 3}
+  tutorialUI: {fileID: 0}
 --- !u!114 &1876467290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,5 +82,7 @@ MonoBehaviour:
   pirogPickUp: {fileID: 4288909394517331012, guid: c6c8a42e5589bcc479cf70cffd754411, type: 3}
   pirogVagnSound: {fileID: 3646243528153372538, guid: 2e7a463053f94be48820f753bfe4fe0c, type: 3}
   crashSound: {fileID: 2845047694675247844, guid: aa498b02325da154d9b0306295ac7ed3, type: 3}
+  winSound: {fileID: 3646243528153372538, guid: 164404e5d0bf4434eb9cc047303a1630, type: 3}
+  loseSound: {fileID: 3646243528153372538, guid: 75311cab25a58a045b7f775b27e6da76, type: 3}
   spinningSound: {fileID: 1051868733325352909, guid: 7a790db6dbaf228499708cfe9e791f45, type: 3}
   spinningSound2: {fileID: 6533697030366879963, guid: 569c774382131a145b1e8ea1473ed7a3, type: 3}

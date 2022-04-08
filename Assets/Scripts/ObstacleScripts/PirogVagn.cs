@@ -13,7 +13,6 @@ public class PirogVagn : MonoBehaviour
     public int piroger = 0;
 
     public GameObject pointsObj;
-    public ParticleSystem explosionParticle;
 
     void Start()
     {
@@ -54,8 +53,8 @@ public class PirogVagn : MonoBehaviour
             uiManager.UpdateScoreCount();
         }
 
-        var particleInstance = Instantiate(explosionParticle, transform.position, Quaternion.identity);
-        Destroy(particleInstance, 2f);
+        // var particleInstance = Instantiate(explosionParticle, transform.position, Quaternion.identity);
+        // Destroy(particleInstance, 2f);
         Destroy(gameObject);
     }
 }

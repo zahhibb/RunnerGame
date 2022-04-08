@@ -7,14 +7,13 @@ public class LevelGeneration : MonoBehaviour
     public GameObject chunk;
     public GameObject finalChunk;
     GameManager gameManager;
-    
 
     //Chunk prefabs
     public GameObject[] chunkPrefabs;
     //Chunks that have been spawned
     List<GameObject> placedChunks = new List<GameObject>();
 
-    public float maxTimer = 0;
+    public float maxTimer = 10;
     public int maxChunkCount = 0;
     int spawnDistance = 50;
 
@@ -39,19 +38,6 @@ public class LevelGeneration : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        //if(currenTimer < maxTimer)
-        //{
-        //    currenTimer += Time.deltaTime;
-        //}
-        //else
-        //{
-        //    SpawnBlock();
-        //    currenTimer = 0;
-        //}
-    }
-
     public void SpawnBlock()
     {
         if (!shouldSpawn)
@@ -59,7 +45,7 @@ public class LevelGeneration : MonoBehaviour
         int nextChunkDistance = chunkCounter * spawnDistance;
 
         //Chose a random chunk here
-        if(gameManager.GetTimer() > 50)
+        if(gameManager.GetTimer() > maxTimer)
         {
             outOfTime = true;
             placedChunks.Add(Instantiate(finalChunk, Vector3.forward * nextChunkDistance, Quaternion.identity));
