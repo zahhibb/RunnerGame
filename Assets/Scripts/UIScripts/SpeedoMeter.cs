@@ -6,12 +6,14 @@ public class SpeedoMeter : MonoBehaviour
 {
     bool goingUp = false;
 
+    float rotationX = 0;
+
     float currentTimer = 0;
     float maxTimer = 0;
 
     void Start()
     {
-        maxTimer = Random.Range(1, 4);
+        
 
     }
 
@@ -24,11 +26,12 @@ public class SpeedoMeter : MonoBehaviour
         }
         else
         {
+            maxTimer = Random.Range(1, 4);
             goingUp = !goingUp;
             currentTimer = 0;
         }
 
-        float tickSpeed = Random.Range(10, 100);
+        float tickSpeed = Random.Range(10, 150);
         float xAxis = Input.GetAxis("Horizontal");
         if (goingUp)
         {
@@ -41,6 +44,15 @@ public class SpeedoMeter : MonoBehaviour
 
         }
 
+        ClampValue();
         transform.Rotate(Vector3.forward * tickSpeed * xAxis * Time.deltaTime, Space.Self);
+    }
+
+    public void ClampValue()
+    {
+        //transform.eulerAngles.y = Mathf.Clamp(transform.eulerAngles.y, -90, 90);
+        //transform.eulerAngles.z = Mathf.Clamp(transform.eulerAngles.z, 170, -80);
+        rotationX = Mathf.Clamp(transform.eulerAngles.z, 0, 150F);
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, rotationX);
     }
 }
