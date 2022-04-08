@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+<<<<<<< HEAD
             controller.enabled = incomingState;
             GetComponent<PlayerController>().enabled = incomingState;
             playerRagdollCollision.StartRagdoll = true;
@@ -154,6 +155,10 @@ public class PlayerController : MonoBehaviour
             {
                 uIManager.ReloadLevel();
             }
+=======
+            soundManager.PlayLoseSound();
+            uIManager.ReloadLevel();
+>>>>>>> Sebbe_Branch
         }
     }
 

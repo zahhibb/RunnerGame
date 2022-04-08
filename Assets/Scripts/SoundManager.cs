@@ -7,11 +7,17 @@ public class SoundManager : MonoBehaviour
     public GameObject pirogPickUp;
     public GameObject pirogVagnSound;
     public GameObject crashSound;
+<<<<<<< HEAD
     
     [SerializeField] private GameObject spinningSound;
     [SerializeField] private GameObject spinningSound2;
 
     private GameObject player;
+=======
+    public GameObject winSound;
+    public GameObject loseSound;
+    GameObject player;
+>>>>>>> Sebbe_Branch
 
     void Start()
     {
@@ -41,6 +47,7 @@ public class SoundManager : MonoBehaviour
         StartCoroutine(DestroySound(sound));
     }
 
+<<<<<<< HEAD
     public void SpinningSound()
     {
         GameObject sound = Instantiate(spinningSound, player.transform.position, Quaternion.identity);
@@ -60,6 +67,17 @@ public class SoundManager : MonoBehaviour
         {
             sound = Instantiate(spinningSound2, player.transform.position, Quaternion.identity);
         }
+=======
+    public void PlayWinSound()
+    {
+        GameObject sound = Instantiate(winSound, player.transform.position, Quaternion.identity);
+        StartCoroutine(DestroySound(sound));
+    }
+
+    public void PlayLoseSound()
+    {
+        GameObject sound = Instantiate(loseSound, player.transform.position, Quaternion.identity);
+>>>>>>> Sebbe_Branch
         StartCoroutine(DestroySound(sound));
     }
 

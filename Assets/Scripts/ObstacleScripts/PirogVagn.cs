@@ -45,6 +45,8 @@ public class PirogVagn : MonoBehaviour
             GameObject tempObj = Instantiate(pointsObj, canvas.transform);
             tempObj.GetComponent<PointPrefab>().SetPoints(gameManager.GetTotalPoints());
 
+            gameManager.DeliveredPirogi(gameManager.GetCurrentPirogis());
+
             soundManager.PirogVagnSound();
             gameManager.ScoreIncrease();
             gameManager.DecreasePirogi();

@@ -9,6 +9,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseCanvas;
     public GameObject settingsMenu;
 
+<<<<<<< HEAD
+=======
+    public string mainMenuScene;
+
+>>>>>>> Sebbe_Branch
     public bool paused = false;
     bool settingsOpen = false;
 
@@ -50,7 +55,11 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnToMenu()
     {
+<<<<<<< HEAD
         SceneManager.LoadScene("Start menu");
+=======
+        SceneManager.LoadScene(0);
+>>>>>>> Sebbe_Branch
     }
 
     public void OpenSettings()

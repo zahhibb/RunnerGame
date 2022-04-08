@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     private int currentPirogis = 0;
     private int pirogMultiplier = 0;
     private int pirogiPickup = 1; // let us talk about how much pirogis you should get from crashing into pirogiwagon
+    private int deliveredPirogi = 0;
+    private bool takenDamage = false;
     private bool goalLevelComplete = false;
     private bool goalDeliveredPirogis = false;
     private bool goalNoDamageTaken = false;
@@ -42,6 +44,26 @@ public class GameManager : MonoBehaviour
     {
         return currentPirogis;
     }
+<<<<<<< HEAD
+=======
+    
+    public void SetDamageTaken()
+    {
+        takenDamage = true;
+    }
+
+    public void DeliveredPirogi(int pirogiAmount)
+    {
+        deliveredPirogi += pirogiAmount;
+    }
+
+    public int GetDeliveriedPirogi()
+    {
+
+        return deliveredPirogi;
+
+    }
+>>>>>>> Sebbe_Branch
 
     //Method to decrease pirogi amount on delivery/sale
     public void DecreasePirogi()
@@ -161,9 +183,25 @@ public class GameManager : MonoBehaviour
         spawnPoint = spawnPos;
     }
 
+    public int GetStarAmount()
+    {
+        int starAmount = 0;
+        if (deliveredPirogi > 8)
+            starAmount++;
+        if (!takenDamage)
+            starAmount++;
+
+        print(starAmount);
+        return starAmount;
+    }
+
     public void SetGoalLevelComplete()
     {
+<<<<<<< HEAD
         goalLevelComplete = true;
+=======
+    goalLevelComplete = true;
+>>>>>>> Sebbe_Branch
     }
 
     public void SetGoalDeliveredPirogis()
@@ -178,6 +216,11 @@ public class GameManager : MonoBehaviour
     public void TakeDamage()
     {
         PlayerLives -= 1;
+        SetDamageTaken();
+    }
+    public int GetCurrentPirogis()
+    {
+        return currentPirogis;
     }
 
     public float GetTimer()
