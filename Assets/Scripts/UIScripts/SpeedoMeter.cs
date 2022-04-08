@@ -31,7 +31,7 @@ public class SpeedoMeter : MonoBehaviour
             currentTimer = 0;
         }
 
-        float tickSpeed = Random.Range(10, 150);
+        float tickSpeed = Random.Range(1, 200);
         float xAxis = Input.GetAxis("Horizontal");
         if (goingUp)
         {
@@ -44,8 +44,8 @@ public class SpeedoMeter : MonoBehaviour
 
         }
 
-        ClampValue();
         transform.Rotate(Vector3.forward * tickSpeed * xAxis * Time.deltaTime, Space.Self);
+        ClampValue();
     }
 
     public void ClampValue()

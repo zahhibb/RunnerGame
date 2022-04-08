@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a4edce2dd9bd445baf76a5e39d15e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endScreen: {fileID: 8083144560275393351, guid: fb55123a7879ea6488ca954d659aad43, type: 3}
+  endScreen: {fileID: 3091538948662373373, guid: 478ac5514197dda468c83d993696b994, type: 3}
 --- !u!1 &8036844245341412706
 GameObject:
   m_ObjectHideFlags: 0
