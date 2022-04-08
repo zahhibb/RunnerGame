@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EndScript : MonoBehaviour
 {
     SoundManager soundManager;
+    GameManager gameManager;
     public GameObject endScreen;
     Canvas canvas;
 
@@ -13,6 +14,7 @@ public class EndScript : MonoBehaviour
     {
         canvas = GameObject.Find("GameplayUI").GetComponent<Canvas>();
         soundManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoundManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     void Start()
@@ -29,8 +31,11 @@ public class EndScript : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Instantiate(endScreen, canvas.transform);
+            SepareteRestart starAccess = Instantiate(endScreen.GetComponent<SepareteRestart>(), canvas.transform);
+
+            starAccess.ActivateStars(1 + gameManager.GetStarAmount(), gameManager.GetTotalScore(), gameManager.GetDeliveriedPirogi());
             soundManager.PlayWinSound();
+            other.GetComponent<PlayerController>().StopPlayer();
         }
     }
 }
