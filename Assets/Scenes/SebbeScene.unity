@@ -1437,6 +1437,7 @@ MonoBehaviour:
   - {fileID: 3753781836695814389, guid: 2ed2cb06f9099b14d9e286bb4abcac36, type: 3}
   - {fileID: 6037177404462748118, guid: bfd5119d9542f9a40ad42e0cdc7525d4, type: 3}
   - {fileID: 848406226122775134, guid: 336b86c2a1d85ad4a8f889915fd5a044, type: 3}
+  - {fileID: 9156955596659157416, guid: 060100e7a2777cd4e8d0e8ae10ac65ba, type: 3}
   maxTimer: 1
   maxChunkCount: 9
   obstacles:
@@ -3565,7 +3566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616209316961510768, guid: 48047e7b5528ba7439db23a2dd9991ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7
+      value: -2.68
       objectReference: {fileID: 0}
     - target: {fileID: 8616209316961510768, guid: 48047e7b5528ba7439db23a2dd9991ff, type: 3}
       propertyPath: m_LocalPosition.y
