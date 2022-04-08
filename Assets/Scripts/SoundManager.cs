@@ -7,6 +7,8 @@ public class SoundManager : MonoBehaviour
     public GameObject pirogPickUp;
     public GameObject pirogVagnSound;
     public GameObject crashSound;
+    public GameObject winSound;
+    public GameObject loseSound;
     GameObject player;
 
     void Start()
@@ -39,6 +41,18 @@ public class SoundManager : MonoBehaviour
     public void CrashSound()
     {
         GameObject sound = Instantiate(crashSound, player.transform.position, Quaternion.identity);
+        StartCoroutine(DestroySound(sound));
+    }
+
+    public void PlayWinSound()
+    {
+        GameObject sound = Instantiate(winSound, player.transform.position, Quaternion.identity);
+        StartCoroutine(DestroySound(sound));
+    }
+
+    public void PlayLoseSound()
+    {
+        GameObject sound = Instantiate(loseSound, player.transform.position, Quaternion.identity);
         StartCoroutine(DestroySound(sound));
     }
 

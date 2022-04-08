@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class EndScript : MonoBehaviour
 {
+    SoundManager soundManager;
     public GameObject endScreen;
     Canvas canvas;
 
     private void Awake()
     {
         canvas = GameObject.Find("GameplayUI").GetComponent<Canvas>();
+        soundManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoundManager>();
     }
 
     void Start()
@@ -28,7 +30,7 @@ public class EndScript : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Instantiate(endScreen, canvas.transform);
-            
+            soundManager.PlayWinSound();
         }
     }
 }

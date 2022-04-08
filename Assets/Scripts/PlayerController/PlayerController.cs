@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(DestroyCorpse());
         else
         {
+            soundManager.PlayLoseSound();
             uIManager.ReloadLevel();
         }
     }
